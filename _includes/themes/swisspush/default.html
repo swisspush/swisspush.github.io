@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'/>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+    <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Duru+Sans' rel='stylesheet' type='text/css'>
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ ASSET_PATH }}/css/stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} - swisspush</title>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <div class="container">
+        <header>
+            <a id="forkme_banner" href="https://github.com/swisspush">View on GitHub</a>
+            <p>
+                <a href="/">
+                    <img style="float: left" src="https://1.gravatar.com/avatar/cf7292487846085732baf808def5685a?s=140">
+                    <div style="float: left; margin-left: 40px;">
+                        <h1 id="project_title">swisspush</h1>
+                        <h2 id="project_tagline">Community Contributions by <em>Information Technology</em></h2>
+                    </div>
+                </a>
+            </p>
+        </header>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <section id="main_content">
+                    {{ content }}
+                </section>
+            </div>
+            <div class="col-md-3" id="leftCol">
+                <div id="sidebar" class="container-fluid well">
+                    <h5>Own Projects</h5>
+                    <ul class="nav nav-stacked">
+                        <li><a href="">jminix</a></li>
+                        <li><a href="">compensate-tx</a></li>
+                    </ul>
+                    <h5>Contributions</h5>
+                    <ul class="nav nav-stacked">
+                        <li><a href="">jdeferred</a></li>
+                        <li><a href="">phonegap</a></li>
+                    </ul>
+                    <h5>Content</h5>
+                    <ul class="nav nav-stacked">
+                    {% assign pages_list = site.pages %}
+                    {% assign group = 'navigation' %}
+                    {% include JB/pages_list %}
+                    </ul>
+                    <h5>Information Technology</h5>
+                    <ul class="nav nav-stacked">
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Jobs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <div class="container">
+        <footer>
+            <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        </footer>
+    </div>
+</div>
+
+{% include JB/analytics %}
+</body>
+</html>
