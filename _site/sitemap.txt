@@ -2,6 +2,7 @@
 http://swisspush.github.io/sitemap.txt
 http://swisspush.github.io/categories.html
 http://swisspush.github.io/archive.html
+http://swisspush.github.io/about.html
 http://swisspush.github.io/tags.html
 http://swisspush.github.io/atom.xml
 http://swisspush.github.io/rss.xml
