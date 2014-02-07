@@ -267,6 +267,10 @@ Full-Width Styles
     margin: 0 auto;
 }
 
+#logo {
+    min-width: 64px;
+}
+
 #forkme_banner {
     display: block;
     position: absolute;
@@ -406,8 +410,20 @@ Small Device Styles
         max-width: 480px;
     }
 
+    #logo-wrap {
+         margin-left: -12px;
+    }
+
+    #forkme_banner_text {
+        display: none;
+    }
+
     #project_title {
         font-size: 32px;
+    }
+
+    #project_tagline {
+        font-size: 12px;
     }
 
     h1 {
