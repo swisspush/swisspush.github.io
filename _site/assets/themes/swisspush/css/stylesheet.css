@@ -267,6 +267,10 @@ Full-Width Styles
     margin: 0 auto;
 }
 
+.logo-wrap {
+    padding-left: 0px;
+}
+
 #logo {
     margin-top: -6px;
     min-width: 64px;
@@ -293,15 +297,15 @@ Full-Width Styles
     background: -ms-linear-gradient(top, #777777, #555555);
     background: -o-linear-gradient(top, #777777, #555555);
     background: linear-gradient(top, #777777, #555555);
-    height: 168px;
 }
 
 #header_wrap a:hover {
     text-decoration: none;
 }
 
-#header_wrap .inner {
-    padding: 10px 30px 30px 10px;
+#header_wrap .container {
+    padding-top: 10px;
+    padding-bottom: 3px;
 }
 
 #project_title {
@@ -377,15 +381,16 @@ Full-Width Styles
 
 #sidebar {
     margin-top: 30px;
+    padding-top: 0px;
 }
 
 #sidebar h5 {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 0px;
 }
 
-#sidebar li {
-    height: 30px;
+#sidebar li a {
+    padding: 4px;
 }
 
 #sidebar li.active {
@@ -400,6 +405,7 @@ Small Device Styles
 @media screen and (max-width: 480px) {
     body {
         font-size: 14px;
+        overflow-wrap: break-word;
     }
 
     #downloads {
@@ -454,9 +460,16 @@ Small Device Styles
     }
 
     code, pre {
-        min-width: 320px;
+        min-width: 200px;
         max-width: 480px;
         font-size: 11px;
+        overflow-wrap: break-word;
+        word-break: break-all; /* webkit */
+        word-wrap: break-word;
+        white-space: pre;
+        white-space: -moz-pre-wrap; /* fennec */
+        white-space: pre-wrap;
+        white-space: pre\9; /* IE7+ */
     }
 
 }
