@@ -2,7 +2,6 @@
 <script type="text/javascript">
     var disqus_shortname = '{{ site.JB.comments.disqus.short_name }}'; // required: replace example with your forum shortname
     var disqus_identifier = '{{ page.url }}';
-    var disqus_title = '{{ page.title }}';
     {% if page.wordpress_id %}var disqus_identifier = '{{page.wordpress_id}} {{site.production_url}}/?p={{page.wordpress_id}}';{% endif %}
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
