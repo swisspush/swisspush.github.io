@@ -1,7 +1,0 @@
----
-layout: page
----
-  {% assign page = site.posts.first %}
-  {% assign content = page.content %}
-  {% include themes/swisspush/post.html %}
-
