@@ -252,6 +252,14 @@ form {
     margin: 0px 0px 0px;
 }
 
+.iconic {
+    position: absolute;
+    height: 32px;
+    margin: -5px 0px 0px 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
 /*******************************************************************************
 Full-Width Styles
 *******************************************************************************/
@@ -382,6 +390,7 @@ Full-Width Styles
 #sidebar {
     margin-top: 30px;
     padding-top: 0px;
+    background: white;
 }
 
 #sidebar h5 {
@@ -393,10 +402,10 @@ Full-Width Styles
     padding: 4px;
 }
 
-#sidebar li.active {
-    border:0 #eee solid;
-    border-right-width:4px;
+#sidebar li a:hover {
+    background: white;
 }
+
 
 /*******************************************************************************
 Small Device Styles
