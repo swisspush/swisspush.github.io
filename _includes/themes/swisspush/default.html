@@ -10,6 +10,7 @@
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ ASSET_PATH }}/css/stylesheet.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.title %}{{ page.title }} - {% endif %}swisspush</title>
 </head>
@@ -47,17 +48,19 @@
             </div>
             <div class="col-md-3">
                 <div id="sidebar" class="container-fluid well">
+                    <h5>Recent Articles</h5>
+                    <ul class="nav nav-stacked">
+                        {% for post in site.posts limit:5 %}
+                            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                        {% endfor %}
+                    </ul>
                     <h5>Own Projects</h5>
                     <ul class="nav nav-stacked">
-                        <li><a href="http://jminix.org">jminix<img class="iconic" src="http://jminix.googlecode.com/svn/wiki/images/jminix-cricket.png"></a></li>
-                        <li><a href="">compensate-tx</a></li>
+                        <li><a title="A simple embeddable restful JMX console" href="http://jminix.org">jminix<img class="iconic" src="http://jminix.googlecode.com/svn/wiki/images/jminix-cricket.png"></a></li>
                     </ul>
                     <h5>Contributions</h5>
-                    <ul class="nav nav-stacked">
-                        <li><a href="">jdeferred</a></li>
-                        <li><a href="">phonegap</a></li>
-                    </ul>
-                    <h5>Content</h5>
+                    <div id="github-projects"></div>
+                    <h5>Blog</h5>
                     <ul class="nav nav-stacked">
                     {% assign pages_list = site.pages %}
                     {% assign group = 'navigation' %}
@@ -84,5 +87,12 @@
 </div>
 
 {% include JB/analytics %}
+
+<script src="/assets/js/github.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#github-projects").loadRepositories("swisspush");
+    });
+</script>
 </body>
 </html>

@@ -255,7 +255,7 @@ form {
 .iconic {
     position: absolute;
     height: 32px;
-    margin: -5px 0px 0px 0px;
+    margin: -2px 0px 0px 0px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -398,8 +398,13 @@ Full-Width Styles
     margin-bottom: 0px;
 }
 
+#sidebar li {
+    padding-left: 20px;
+    text-indent: -10px;
+}
+
 #sidebar li a {
-    padding: 4px;
+    padding: 0px;
 }
 
 #sidebar li a:hover {

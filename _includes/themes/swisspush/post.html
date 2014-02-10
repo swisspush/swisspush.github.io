@@ -4,8 +4,8 @@
 
 <div class="row-fluid post-full">
   <div class="span12">
-    <div class="date">
-      <span>{{ page.date | date_to_long_string }}</span>
+    <div>
+      <span class="date">{{ page.date | date_to_long_string }}</span> {% if page.author %} - {{ page.author }} {% endif %}
     </div>
 
       <div class="content">
