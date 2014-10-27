@@ -11,7 +11,7 @@ Look at this snippet:
 
 {% highlight javascript %}
 function a() {
-    var b = 2;
+    var c = 2;
 }
 {% endhighlight %}
 
