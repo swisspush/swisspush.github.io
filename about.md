@@ -7,13 +7,12 @@ description: "Who we are"
 
 ### What is __swisspush__?
 
-It is a group of developers and sofware architects from _Information Technology_ using Open Source in their daily work.
+It is a group of [developers and software architects](https://github.com/orgs/swisspush/people) from Swiss Post IT using Open Source in their daily work.
 
-In agreement with their employer, they maintain this blog and publish source code contributions from _Information Technology_.
+In agreement with their employer, they maintain this blog and publish source code contributions.
 
 ### Disclaimer
 
 Any views, statements or opinions presented in the articles are solely those of their authors and do not necessarily represent the
-views of _Information Technology_ or its parent company.
+views of Swiss Post IT or its parent company.
 
-Note that disclosure of internal information and code goes through an editorial process controlled by _Information Technology_.
