@@ -199,12 +199,17 @@ ul.nav {
     padding-left: 10px;
 }
 
+.horizontal {
+    padding-left: 10px;
+}
+
 .horizontal > li {
-    display: inline;
+    display: inline-block;
 }
 
 .horizontal > li > a {
     text-decoration: none;
+    white-space: nowrap;
 }
 
 ol {

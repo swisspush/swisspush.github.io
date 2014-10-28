@@ -15,4 +15,4 @@ We are committed to participating in the Open Source Community. This platform wi
 
 You will find here our code contributions, technical articles and discussions.
 
-Learn more [about us](/about.html)
+Learn more [about us](/about.html).
