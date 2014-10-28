@@ -194,9 +194,17 @@ ul, ol, dl {
     margin-bottom: 15px
 }
 
-ul {
+ul.nav {
     list-style: inside;
-    padding-left: 20px;
+    padding-left: 10px;
+}
+
+.horizontal > li {
+    display: inline;
+}
+
+.horizontal > li > a {
+    text-decoration: none;
 }
 
 ol {

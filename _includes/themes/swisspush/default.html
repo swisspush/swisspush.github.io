@@ -41,12 +41,12 @@
 <div id="main_content_wrap" class="outer">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <section id="main_content">
                     {{ content }}
                 </section>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div id="sidebar" class="container-fluid well">
                     <h5>Recent Articles</h5>
                     <ul class="nav nav-stacked">
@@ -61,13 +61,13 @@
                     <h5>Contributions</h5>
                     <div id="github-projects"></div>
                     <h5>Blog</h5>
-                    <ul class="nav nav-stacked">
+                    <ul class="horizontal">
                     {% assign pages_list = site.pages %}
                     {% assign group = 'navigation' %}
                     {% include JB/pages_list %}
                     </ul>
                     <h5>Resources</h5>
-                    <ul class="nav nav-stacked">
+                    <ul class="horizontal">
                         <li><a href="/about.html">About us</a></li>
                         <li><a href="http://www.post.ch/en/post-startseite/post-jobs-und-karriere.htm">Jobs</a></li>
                     </ul>
