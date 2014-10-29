@@ -212,6 +212,12 @@ ul.nav {
     white-space: nowrap;
 }
 
+.date {
+    float: right;
+    color: grey;
+    font-size: 60%;
+}
+
 ol {
     list-style: decimal inside;
     padding-left: 20px;
