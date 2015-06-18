@@ -62,7 +62,7 @@ There is a need for formal contracts, clearly. Too bad that the strict definitio
 
 So, if you adopt formal contracts for any reason (documentation, validation, code generation, ...) you are in the _typed world_. Thus, you are outside of HATEOAS sphere of influence, you _don't need_ HATEOAS, in this case.
 
-We need formal contracts for our enterprise APIs. We need them starting form the inception to the documentation, for reviews, design discussion, compatibility management, data quality. Return on experienced confirmed that it was a good choice, thus we keep this direction for published APIs as well.
+We need formal contracts for our enterprise APIs. We need them starting form the inception to the documentation, for reviews, design discussion, compatibility management, data quality. Return on experience confirmed that it was a good choice, thus we keep this direction for published APIs as well.
 
 # Accidental Complexity
 
