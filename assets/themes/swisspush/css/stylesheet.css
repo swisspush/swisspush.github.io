@@ -36,7 +36,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 ol, ul {
-    list-style: none;
+    list-style: bullet;
 }
 
 table {
@@ -194,6 +194,14 @@ ul, ol, dl {
     margin-bottom: 15px
 }
 
+li {
+    margin-left: 36px;
+}
+
+.inline li {
+    margin-left: 0px;    
+}
+
 ul.nav {
     list-style: inside;
     padding-left: 10px;
@@ -205,6 +213,7 @@ ul.nav {
 
 .horizontal > li {
     display: inline-block;
+    margin-left: 0px;    
 }
 
 .horizontal > li > a {
@@ -417,9 +426,10 @@ Full-Width Styles
     margin-bottom: 0px;
 }
 
-#sidebar li {
+#sidebar li {    
     padding-left: 20px;
     text-indent: -10px;
+    margin-left: 0px;    
 }
 
 #sidebar li a {
