@@ -8,9 +8,9 @@ tags: [opensource, security, adroid, mobile]
 {% include JB/setup %}
 
 ####Security in mind
-During the 2015 I had the opportunity to work on a very challenging project: I had to find a solution to improve security context of mobile applications, built with Android, which would be used for **business to employee** (B2E) scenarios.
-Mobile applications thought to be used by employees must rely to high security constraints because of potential confidential enterprise information which could be stored in the device itself. Moreover it is necessary to define boundaries through private and enterprise data. The brand new trend of [BYOD](http://www.gartner.com/newsroom/id/2466615) in enterprise is the next big technology switch in the future for enterprises. In this scenario solutions belongs to appropriate platforms such as **Microsoft Enterprise Mobility**, **Oracle Mobile Cloud Service**, **Airwatch**, **Google for Work** and so on.
-Before going and evaluating a platform I had to find my own solution for the current security implementation we have. 
+During 2015, I had the opportunity to work on a very challenging project: I had to find a solution to improve security context of mobile applications, built with Android, which would be used for **business to employee** (B2E) scenarios.
+Mobile applications thought to be used by employees must rely on high security constraints because of potential confidential enterprise information which could be stored in the device itself. Moreover it is necessary to define boundaries between private and enterprise data. The trend of [BYOD](http://www.gartner.com/newsroom/id/2466615) in enterprise is the next big technology switch in the future for enterprises. In this scenario, solutions belong to appropriate platforms such as **Microsoft Enterprise Mobility**, **Oracle Mobile Cloud Service**, **Airwatch**, **Google for Work** and so on.
+Before going and evaluating a platform, I had to find my own solution for the current security implementation we have. 
 
 The technology stack has been be the following:
 
@@ -31,11 +31,11 @@ The challenge is to be able to extend the webview in order to allow the mutual a
 #####Attempt 1
 _Analysis of the sources and Android in particular stack security and the implementation of the WebView-based Chormium (new implementation from version 4.4)._
 
-The analysis confirmed that the classes and methods that allowed it to intercept the request of the client certificate in previous versions of WebView have been totally removed from the SDK. The analysis of C source of low-level implementation of Chromium has confirmed that the implementation contained in 4.4 does not allow you to select webview client side certificates:
+The analysis confirmed that the classes and methods that allowed to intercept the request of the client certificate in previous versions of WebView have been totally removed from the SDK. The analysis of Chromium's low-level implementation has confirmed that the implementation contained in 4.4 does not allow to select webview client side certificates:
 
 ![Snippet 1]({{ site.url }}/assets/images/xwalk/pic-1.png)
 
-This is an excerpt from the code of webview of Android in June 2013. From the comments, it is clear that in the webview not support client-side certificates.
+This is an excerpt from the code of webview of Android in June 2013. From the comments, it is clear that the webview does not support client-side certificates.
 In the latest source of Android, however, something is moving. The implementation method of the same date in September 2014 it seems to open some glimmer:
 
 ![Snippet 2]({{ site.url }}/assets/images/xwalk/pic-2.png)
@@ -63,17 +63,17 @@ The [Java Secure Socket Extension (JSSE)](http://docs.oracle.com/javase/7/docs/t
 
 Assumption tested:
 
-1. In a _standard_ implementation, the JSSE framework should intercept all secure network communications made by Java applications deployed on a specific platform;
-2. JSSE framework is extensible and allows developer to plug custom network security implementations (Security Providers);
-3. Android platform uses a standard JSSE implementation (Apache Harmony JSSE);
-4. Implementing a **custom** Security Provider on the Android platform should allow to intercept and customize all secure network connections made with the available Android networking APIs: **HttpConnection**, **HttpClient**, **WebView** connections;
+1. In a _standard_ implementation, the JSSE framework should intercept all secure network communications made by Java applications deployed on a specific platform.
+2. JSSE framework is extensible and allows developer to plug custom network security implementations (Security Providers).
+3. Android platform uses a standard JSSE implementation (Apache Harmony JSSE).
+4. Implementing a **custom** Security Provider on the Android platform should allow to intercept and customize all secure network connections made with the available Android networking APIs: **HttpConnection**, **HttpClient**, **WebView** connections.
 
 PoC built:
 
 A demo Android app has been implemented to use a standard WebView and two methods of loading content into it:
 
-1. Standard WebView loadUrl() API;
-2. CustomWebClient implementation that intercepts all WebView HTTP requests and loads them using HTTPConnection API;
+1. Standard WebView loadUrl() API.
+2. CustomWebClient implementation that intercepts all WebView HTTP requests and loads them using HTTPConnection API.
 
 This implementation has been tested on Android platform 19 (Kit Kat) and 21 (Android L Preview);
 
@@ -81,33 +81,33 @@ Results:
 
 1. Standard WebView loadUrl() API:
 
-	1. The custom _TrustManagerFactory_ is invoked during the server certificate check of the SSL handshaking flow
-	2. The custom _KeyManagerFactory_ is **not** invoked during the client certificate request phase of the SSL handshaking flow;
-	3. Connecting to a server that requires Client Certificate autentication **fails** with error code 901 (SSL server requires client certificate) on both tested API levels (19 and 21);  
-	4. **final considerations**: WebView connections partially rely on JSSE framework stack (server certificate trust check). Unfortunately the connection with the hosting platform JSSE client certificate management (_KeyManagerFactory_ and _KeyManager_) is not implemented;
+	1. The custom _TrustManagerFactory_ is invoked during the server certificate check of the SSL handshaking flow.
+	2. The custom _KeyManagerFactory_ is **not** invoked during the client certificate request phase of the SSL handshaking flow.
+	3. Connecting to a server that requires Client Certificate autentication **fails** with error code 901 (SSL server requires client certificate) on both tested API levels (19 and 21); .
+	4. **final considerations**: WebView connections partially rely on JSSE framework stack (server certificate trust check). Unfortunately the connection with the hosting platform JSSE client certificate management (_KeyManagerFactory_ and _KeyManager_) is not implemented.
 
 2. HTTPConnection API:
 
-	1. The custom _TrustManagerFactory_ is invoked during the server certificate check of the SSL handshaking flow;
-	2. The custom KeyManagerFactory is **successfully** invoked during the client certificate request phase of the SSL handshaking flow;
-	3. Connecting to a server that requires Client Certificate authentication **succeds** on both tested API levels (19 and 21);    
+	1. The custom _TrustManagerFactory_ is invoked during the server certificate check of the SSL handshaking flow.
+	2. The custom KeyManagerFactory is **successfully** invoked during the client certificate request phase of the SSL handshaking flow.
+	3. Connecting to a server that requires Client Certificate authentication **succeds** on both tested API levels (19 and 21).
 	4. **final considerations**: the _HTTPConnection_ API allows to load a resource protected with client certificate authentication into the WebView but this solution is not usable in a production environment because is not able to deal with:
 		
 		1. HTTP Posts
 		2. AJAX Asynchronous HTTP Connections
 
 ####Contributing to xwalk
-In order to have a solution compliant with security and platform target requirement with the team decided to have a look for an alternative webview which could be customized and used to replace the native android webview.
+In order to have a solution compliant with security and platform target requirement, the team decided to look for an alternative webview which could be customized and used to replace the native android webview.
 
-The choice is gone to [CrossWalk](https://crosswalk-project.org/).
+[CrossWalk](https://crosswalk-project.org/) has been chosen.
 
-After an initial environment configuration to build the the library the patch has been done and the solution has been verified in another PoC.
-Once the solution has been testex internally and also from off-shore team, the new feature has been provided to the open source project:
+After an initial environment configuration to build the the library, the patch has been done and the solution has been verified in another PoC.
+Once the solution has been tested internally and also from off-shore team, the new feature has been provided to the open source project:
 
 1. [https://github.com/crosswalk-project/crosswalk/pull/3126](https://github.com/crosswalk-project/crosswalk/pull/3126)
 
-The process ofaccepting the pull request has been long and has required some further work to be done to be compliant with quality rules of the project.
-At the end today CrossWalk supports natively today mutual authentication and as SwissPost we are proud the have contributed to. 
+The process of accepting the pull request has been long and has required some further work to be done to be compliant with quality rules of the project.
+At the end today CrossWalk supports natively today mutual authentication and we are proud the have contributed to it. 
 
 ####Links
 
