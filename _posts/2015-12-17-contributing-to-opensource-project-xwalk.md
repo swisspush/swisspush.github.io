@@ -7,7 +7,7 @@ tags: [opensource, security, adroid, mobile]
 ---
 {% include JB/setup %}
 
-####Security in mind
+#### Security in mind
 During 2015, I had the opportunity to work on a very challenging project: I had to find a solution to improve security context of mobile applications, built with Android, which would be used for **business to employee** (B2E) scenarios.
 Mobile applications thought to be used by employees must rely on high security constraints because of potential confidential enterprise information which could be stored in the device itself. Moreover it is necessary to define boundaries between private and enterprise data. The trend of [BYOD](http://www.gartner.com/newsroom/id/2466615) in enterprise is the next big technology switch in the future for enterprises. In this scenario, solutions belong to appropriate platforms such as **Microsoft Enterprise Mobility**, **Oracle Mobile Cloud Service**, **Airwatch**, **Google for Work** and so on.
 Before going and evaluating a platform, I had to find my own solution for the current security implementation we have. 
@@ -25,10 +25,10 @@ The proof of concept to build requires:
 3. Store the certificate in secure storage on device
 4. Allow [webview](http://developer.android.com/reference/android/webkit/WebView.html) to use [mutual authentication](https://en.wikipedia.org/wiki/Mutual_authentication) 
 
-####The challenge, the trials and the solution
+#### The challenge, the trials and the solution
 The challenge is to be able to extend the webview in order to allow the mutual authentication handshake natively and not using other solutions (like http proxying, ...).
 
-#####Attempt 1
+##### Attempt 1
 _Analysis of the sources and Android in particular stack security and the implementation of the WebView-based Chormium (new implementation from version 4.4)._
 
 The analysis confirmed that the classes and methods that allowed to intercept the request of the client certificate in previous versions of WebView have been totally removed from the SDK. The analysis of Chromium's low-level implementation has confirmed that the implementation contained in 4.4 does not allow to select webview client side certificates:
@@ -40,7 +40,7 @@ In the latest source of Android, however, something is moving. The implementatio
 
 ![Snippet 2]({{ site.url }}/assets/images/xwalk/pic-2.png)
 
-#####Attempt 2
+##### Attempt 2
 _Partially working solution for versions from 15 to 18 (HiddenApiAdoption)_
 
 In these versions there are two classes:
@@ -54,7 +54,7 @@ which allows to implement the following method:
 
 So in this case, implementing this method it is possible to enable the use of client certificates in a webview.
 
-#####Attempt 3
+##### Attempt 3
 _Customize Java Secure Socket Extension (JSSE)_
 
 The [Java Secure Socket Extension (JSSE)](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/JSSERefGuide.html) enables secure Internet communications. It provides a framework and an implementation for a Java version of the SSL and TLS protocols and includes functionality for data encryption, server authentication, message integrity, and optional client authentication.
@@ -96,7 +96,7 @@ Results:
 		1. HTTP Posts
 		2. AJAX Asynchronous HTTP Connections
 
-####Contributing to xwalk
+#### Contributing to xwalk
 In order to have a solution compliant with security and platform target requirement, the team decided to look for an alternative webview which could be customized and used to replace the native android webview.
 
 [CrossWalk](https://crosswalk-project.org/) has been chosen.
@@ -109,7 +109,7 @@ Once the solution has been tested internally and also from off-shore team, the n
 The process of accepting the pull request has been long and has required some further work to be done to be compliant with quality rules of the project.
 At the end today CrossWalk supports natively today mutual authentication and we are proud the have contributed to it. 
 
-####Links
+#### Links
 
 1. [http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html](http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html)
 2. [http://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/HowToImplAProvider.html](http://docs.oracle.com/javase/7/docs/technotes/guides/security/crypto/HowToImplAProvider.html)

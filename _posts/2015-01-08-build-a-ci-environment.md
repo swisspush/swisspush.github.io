@@ -7,7 +7,7 @@ tags: [mesos]
 ---
 {% include JB/setup %}
 
-####Overview
+#### Overview
 This article is a follow up of the "Setup Mesos on a single node" article.
 
 By default I have chosen to use Docker to run images and containers for all the tasks. This is a _de facto_ choice, so no scenario will be shown about Docker usage: it will be used.
@@ -25,12 +25,12 @@ In any case logically the configuration is the following:
 	1. Mesos Slave
 	2. Docker engine
 
-####Use Cases
+#### Use Cases
 
-######Use Case 1: Building a Docker Image as build result
+###### Use Case 1: Building a Docker Image as build result
 Currently we have no docker in production machines. So building and publishing as a result of a build the docker image to be deployed in the environments is not a useful use case for our scenario.
 
-#####Use Case 2: Build artifacts as usual but simplify build environment
+##### Use Case 2: Build artifacts as usual but simplify build environment
 This use cases allows to simplify build environments, allowing to have only needed library/tools dependencies and no overlapping version.
 
 ![Mesos Overview]({{ site.url }}/assets/images/mesos/ci-1.png)
@@ -45,7 +45,7 @@ Possible base images:
 4. Java7, Android 20, Gradle
 5. ...
 
-####Scenario1: Using directly Jenkins framework
+#### Scenario1: Using directly Jenkins framework
 The first scenario evaluated is to use directly Jenkins as Mesos Framework: In fact Jenkins can be extended to became a valid Mesos Framework using the mesos-plugin. In this scenario jenkins is a single point of entry of the system and as well is a single point of failure.
 
 ![Mesos Overview]({{ site.url }}/assets/images/mesos/ci-2.png)
@@ -57,7 +57,7 @@ To install Jenkins simply:
 
 As done before to disable the automatic execution of the jenkins service (installed by the previous command) create and `jenkins.override` file in the `/etc/init` folder with manual word inside.
 
-#####Installing Mesos-Plugin
+##### Installing Mesos-Plugin
 Once Jenkins is running, it will be possible to install the Mesos-plugin framework and configure it, directly from the web ui.
 Access to [http://localhost:8080](http://localhost:8080) to access to Jenkins Home page:
 
@@ -76,7 +76,7 @@ To install the mesos plugin without Internet access:
 2. move the previously downloaded file to the Jenkins machine in the **/var/lib/jenkins/**plugins folder
 3. restart jenkins
 
-#####Configuring Mesos-Plugin
+##### Configuring Mesos-Plugin
 
 1. click on **Manage Jenkins**
 2. click on **Configure System**
@@ -84,7 +84,7 @@ To install the mesos plugin without Internet access:
 
 ![Mesos Overview]({{ site.url }}/assets/images/mesos/ci-4.png)
 
-####Scenario 2: Using Marathon framework as intermediary
+#### Scenario 2: Using Marathon framework as intermediary
 The second scenario is more reliable because it will use Marathon which is a long duration task runner which has the aim to start the jenkins master and motior it as well.
 
 ![Mesos Overview]({{ site.url }}/assets/images/mesos/ci-5.png)
@@ -97,7 +97,7 @@ Marathon runs tasks in isolated environment (temporary folders) so the previousl
 
 In order to achieve this goal one of the possible approaches is to prepare a folder containing the jenkins war to be executed witl also the config.xml file which jenkins uses to store all the intalled plugins and other configuration which can be done using the web ui.
 
-#####Preparing the jenkins war and plugins folder
+##### Preparing the jenkins war and plugins folder
 Steps to be done to let mesos plugin working. All other plugins and jenkins configuration must be done in the same way if we don't want to loose changes after task restart.
 
 1. Create a **jenkins-ci** folder
@@ -105,7 +105,7 @@ Steps to be done to let mesos plugin working. All other plugins and jenkins conf
 3. Create a **plugins** folder into *jenkins-ci* folder
 4. Download **mesos.hpi** and **saferestart.hpi** plugins from jenkin plugin web site and copy them into plugins folder previously created
 
-#####Preparing the config.xml
+##### Preparing the config.xml
 Jenkins mesos plugin must be configured:
 
 1. Create or copy an existing **config.xml** file into *jenkins-ci* folder
@@ -143,7 +143,7 @@ The important parts to notice are:
 2. **slave resources section**: will hold the amout of resources which will be allocated for every slave
 3. **labelString**: is mandatory and tells to jenkins master that each job with same associated label must belong to this slave.
 
-#####Run the task
+##### Run the task
 I selected to use **github** account to pull the **jenkins.war** file and its own config files.
 
 From Marathon ui, add a new task and fill command area with something like:
@@ -158,7 +158,7 @@ See below:
 
 And click **create**. The Jenkins-Master now is created as a Marathon application.
 
-####Building using Docker images
+#### Building using Docker images
 The most interesting thing is to try to build using dockerized images. Advantages are related to isolation of environments, avoid dependencies hell and so on. I am not going to explain what Docker is and why it is useful here. This section is related to using docker in jenkins and build in a mesos environment.
 
 Let's start.
