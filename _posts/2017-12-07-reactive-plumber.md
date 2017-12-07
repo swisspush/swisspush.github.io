@@ -13,7 +13,7 @@ You want to use [Reactor](https://projectreactor.io/) (or [RxJava](https://githu
 
 It is intended to be used in Java or Groovy applications.
 
-<table><tr><td>
+<table><tr><td style="vertical-align:top">
 <pre>
 def data = pipe {
     from input map wrap
@@ -45,7 +45,7 @@ def thread = pipe {
 
 drain size, thread
 </pre>
-</td><td>
+</td><td style="vertical-align:top">
 <img src="https://cloud.githubusercontent.com/assets/692124/23836787/2761ce26-077e-11e7-97f0-ffda49431851.png">
 
 </td></tr></table>
