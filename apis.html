@@ -1,45 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>APIs</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-rx"></script>
-</head>
-<body>
-    <div id="main">
-        <div v-for="repo in repos">
-            <h2>{{ repo.info.name }}</h2>
-            {{ repo.info.description }}
-            <ul v-for="release in repo.releases">
-                <li><a :href="'https://rawgit.com/swisspush/apikana-doc/v0.4.14.2/index.html?url=/swisspush/'+repo.info.name+'/release/'+release+'/src/openapi/api.yaml'">{{ release }}</a></li>
-            </ul>            
-        </div>
+---
+layout: page
+title: Pages 
+header: Pages
+group: navigation
+---
+<div id="main">
+    <div v-for="repo in repos">
+        <h2>{{ repo.info.name }}</h2>
+        {{ repo.info.description }}
+        <ul v-for="release in repo.releases">
+            <li><a :href="'https://rawgit.com/swisspush/apikana-doc/v0.4.14.2/index.html?url=/swisspush/'+repo.info.name+'/release/'+release+'/src/openapi/api.yaml'">{{ release }}</a></li>
+        </ul>            
     </div>
-    <script>
-        const { ajax } = rxjs.ajax;
-        const { filter, map, flatMap, tap, toArray } = rxjs.operators;
-        const repos$ = ajax({url:"https://api.github.com/users/swisspush/repos", headers: {"Accept": "application/vnd.github.mercy-preview+json"}}).pipe(
+</div>
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-rx"></script>
+<script>
+    const { ajax } = rxjs.ajax;
+    const { filter, map, flatMap, tap, toArray } = rxjs.operators;
+    const repos$ = ajax({url:"https://api.github.com/users/swisspush/repos", headers: {"Accept": "application/vnd.github.mercy-preview+json"}}).pipe(
+        flatMap(xhr => xhr.response),
+        filter(info => info.topics.includes("api")),
+        flatMap(info => ajax(info.tags_url).pipe(
             flatMap(xhr => xhr.response),
-            filter(info => info.topics.includes("api")),
-            flatMap(info => ajax(info.tags_url).pipe(
-                flatMap(xhr => xhr.response),
-                filter(tag => tag.name.startsWith("release/")),
-                map(tag => tag.name.split("/")[1]),
-                toArray(),
-                map(releases => new Object({ info, releases }))
-            )),
-            toArray()
-        );
-        new Vue({
-            el: '#main',
-            subscriptions: {
-                repos: repos$
-            }
-        });
-    </script>
-</body>
-</html>
+            filter(tag => tag.name.startsWith("release/")),
+            map(tag => tag.name.split("/")[1]),
+            toArray(),
+            map(releases => new Object({ info, releases }))
+        )),
+        toArray()
+    );
+    new Vue({
+        el: '#main',
+        subscriptions: {
+            repos: repos$
+        }
+    });
+</script>
