@@ -6,10 +6,10 @@ group: navigation
 ---
 <div id="main">
     <div v-for="repo in repos">
-        <h2>{{ repo.info.name }}</h2>
-        {{ repo.info.description }}
+        <h2>[[ repo.info.name ]]</h2>
+        [[ repo.info.description ]]
         <ul v-for="release in repo.releases">
-            <li><a :href="'https://rawgit.com/swisspush/apikana-doc/v0.4.14.2/index.html?url=/swisspush/'+repo.info.name+'/release/'+release+'/src/openapi/api.yaml'">{{ release }}</a></li>
+            <li><a :href="'https://rawgit.com/swisspush/apikana-doc/v0.4.14.2/index.html?url=/swisspush/'+repo.info.name+'/release/'+release+'/src/openapi/api.yaml'">[[ release ]]</a></li>
         </ul>            
     </div>
 </div>
@@ -31,6 +31,7 @@ group: navigation
         )),
         toArray()
     );
+    Vue.options.delimiters = ['[[', ']]'];
     new Vue({
         el: '#main',
         subscriptions: {
