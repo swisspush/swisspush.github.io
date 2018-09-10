@@ -4,12 +4,25 @@ title: APIs
 header: APIs
 group: navigation
 ---
-<div id="main">
+<style>
+.release-list {
+    list-style-type: none;
+    max-height: 120px;
+    width: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid rgb(227, 227, 227);
+    border-radius: 4px;
+    background: white;
+    padding-left: 4px;
+}
+</style>
+<div id="main">    
     <div v-for="repo in repos">
         <h2>[[ repo.info.name ]]</h2>
         [[ repo.info.description ]]
-        <ul v-for="release in repo.releases">
-            <li><a :href="'https://rawgit.com/swisspush/apikana-doc/v0.4.14.2/index.html?url=/swisspush/'+repo.info.name+'/release/'+release+'/src/openapi/api.yaml'">[[ release ]]</a></li>
+        <ul class="release-list">
+            <li v-for="release in repo.releases"><a :href="'https://rawgit.com/swisspush/apikana-doc/v0.4.14.2/index.html?url=/swisspush/'+repo.info.name+'/release/'+release+'/src/openapi/api.yaml'">[[ release ]]</a></li>
         </ul>            
     </div>
 </div>
