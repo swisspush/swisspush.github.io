@@ -43,11 +43,11 @@ group: navigation
 <script src="https://cdn.jsdelivr.net/npm/vue-rx"></script>
 <script>
     const { ajax } = rxjs.ajax;
-    const { filter, map, flatMap, tap, toArray } = rxjs.operators;
+    const { filter, map, flatMap, concatMap, tap, toArray } = rxjs.operators;
     const repos$ = ajax({url:"https://api.github.com/users/swisspush/repos", cache: true, headers: {"Accept": "application/vnd.github.mercy-preview+json"}}).pipe(
         flatMap(xhr => xhr.response),
         filter(info => info.topics.includes("api")),
-        flatMap(info => ajax({url: info.tags_url, cache: true}).pipe(
+        concatMap(info => ajax({url: info.tags_url, cache: true}).pipe(
             flatMap(xhr => xhr.response),
             filter(tag => tag.name.startsWith("release/")),
             map(tag => tag.name.split("/")[1]),
