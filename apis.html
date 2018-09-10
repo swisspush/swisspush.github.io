@@ -16,11 +16,22 @@ group: navigation
     background: white;
     padding-left: 4px;
 }
+.icon {
+    width: 15px;
+    height:15px;
+    opacity: 0.3;
+    margin: 0;
+    padding: 0;
+}
 </style>
 <div id="main">    
     <div v-for="repo in repos">
-        <h2>[[ repo.info.name ]]</h2>
-        [[ repo.info.description ]]
+        <h2>[[ repo.info.name ]]
+            <a :href="'https://github.com/swisspush/'+repo.info.name">
+                <img class="icon" src="https://unpkg.com/simple-icons@latest/icons/github.svg"/>
+            </a>
+        </h2>
+        [[ repo.info.description ]] 
         <ul class="release-list">
             <li v-for="release in repo.releases"><a :href="'https://rawgit.com/swisspush/apikana-doc/v0.4.14.2/index.html?url=/swisspush/'+repo.info.name+'/release/'+release+'/src/openapi/api.yaml'">[[ release ]]</a></li>
         </ul>            
