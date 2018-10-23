@@ -111,6 +111,6 @@ tags: [ architecture, kubernetes, kotlin, open-source, spring-boot, camel, java,
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Ready for my talk at <a href="https://twitter.com/hashtag/VDT18?src=hash&amp;ref_src=twsrc%5Etfw">#VDT18</a> about <a href="https://twitter.com/hashtag/kotlin?src=hash&amp;ref_src=twsrc%5Etfw">#kotlin</a> <a href="https://t.co/oxxiAyCo26">pic.twitter.com/oxxiAyCo26</a></p>&mdash; Marharyta Nedzelska (@jMargaritaN) <a href="https://twitter.com/jMargaritaN/status/1053656979137282049?ref_src=twsrc%5Etfw">October 20, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="und" dir="ltr"><a href="https://twitter.com/hashtag/vdt18?src=hash&amp;ref_src=twsrc%5Etfw">#vdt18</a> <a href="https://t.co/Tbgi4By8jQ">pic.twitter.com/Tbgi4By8jQ</a></p>&mdash; Laurent Bovet (@lbovet) <a href="https://twitter.com/lbovet/status/1053656427330523137?ref_src=twsrc%5Etfw">October 20, 2018</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Laziness done right in Kotlin, will it come in Java 14? <a href="https://twitter.com/hashtag/vdt18?src=hash&amp;ref_src=twsrc%5Etfw">#vdt18</a></p>&mdash; Laurent Bovet (@lbovet) <a href="https://twitter.com/lbovet/status/1053660729121927168?ref_src=twsrc%5Etfw">October 20, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
