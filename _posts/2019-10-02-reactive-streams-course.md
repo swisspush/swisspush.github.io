@@ -18,4 +18,4 @@ I found the excellent [ObservableHQ](https://observablehq.com) by Mike Bostock, 
 I created a step-by-step course that is freely available. 
 I did not document the steps thoroughly, but there is material to get inspiration from:
 
-Jump to https://observablehq.com/collection/@lbovet/reactive-stream-course, now!
+Jump to [https://observablehq.com/collection/@lbovet/reactive-stream-course](https://observablehq.com/collection/@lbovet/reactive-stream-course), now!
