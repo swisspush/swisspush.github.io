@@ -17,7 +17,7 @@ I found the excellent [ObservableHQ](https://observablehq.com) by Mike Bostock, 
 
 I created a step-by-step course that is freely available. 
 
-![reactive-course]({{ site.url }}/assets/images/reactive-course/extract-small.png)
+![reactive-course]({{ site.url }}/assets/reactive-course/extract-small.png)
 
 I did not document the steps thoroughly, but there is material to get inspiration from:
 
