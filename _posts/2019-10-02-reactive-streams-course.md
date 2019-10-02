@@ -16,6 +16,9 @@ I was searching for something similar in Javascript that I could easily extend f
 I found the excellent [ObservableHQ](https://observablehq.com) by Mike Bostock, the author of d3.
 
 I created a step-by-step course that is freely available. 
+
+![reactive-course]({{ site.url }}/assets/images/reactive-course/extract-small.png)
+
 I did not document the steps thoroughly, but there is material to get inspiration from:
 
 Jump to [https://observablehq.com/collection/@lbovet/reactive-stream-course](https://observablehq.com/collection/@lbovet/reactive-stream-course), now!
