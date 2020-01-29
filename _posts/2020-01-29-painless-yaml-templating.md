@@ -18,23 +18,23 @@ The main characteristic of YAML is the role played by semantic indentation. It m
 <tr>
 <td>
 
-```yaml
+{% highlight yaml %}
 
 hello:
   foo: bar            
 
 
-```
+{% endhighlight %}
 </td>
 <td>
 
-```json
+{% highlight json %}
 {
   "hello": {
     "foo": "bar"       
   }
 }
-```
+{% endhighlight %}
 </td>
 </tr>
 </table>
@@ -59,11 +59,14 @@ It is a clever but lazy move because it does not work well when indentation come
 
 From a user experience point of view, the opening and closing symbols that YAML avoided come back in the templating language. 
 
-```helm
+
+{% highlight yaml %}
+{% raw %}
   {{ if eq .Values.favorite.drink "coffee" }}
   mug: true
   {{ end }}
-```
+{% endraw %}
+{% endhighlight %}
 
 ## Alternative: a Dedicated Language
 
@@ -129,8 +132,7 @@ With YAML tags in and mind inspiration from YTT and Jsonnet, came the design of 
 <tr><th>Input</th><th>Output</th></tr>
 <tr>
 <td>
-
-```yaml
+{% highlight yaml %}
 greeting: !- Hello
 greeter: !()
   length: !? len($)
@@ -142,11 +144,11 @@ names: !-
 messages:
   - !for $_.names: !()
      - !? ($_.greeter)($)          
-```
+{% endhighlight %}
 </td>
 <td>
 
-```yaml
+{% highlight yaml %}
 messages:
 - length: 5
   message: Hello, world        
@@ -158,7 +160,7 @@ messages:
 
 
 
-```
+{% endhighlight %}
 </td>
 </tr>
 </table>
