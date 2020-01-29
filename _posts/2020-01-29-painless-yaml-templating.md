@@ -72,7 +72,7 @@ From a user experience point of view, the opening and closing symbols that YAML 
 
 To avoid the drawbacks of text templating, one can adopt a configuration language providing the programmatic features needed to tackle the complexity and generate the YAML. This is typically the approach taken by [Jsonnet](https://jsonnet.org/). It is a powerful language that natively understands the data structure.
 
-```jsonnet
+{% highlight jsonnet %}
   Martini: {
     ingredients: [
       {
@@ -82,7 +82,7 @@ To avoid the drawbacks of text templating, one can adopt a configuration languag
       { kind: 'Dry White Vermouth', qty: 1 },
     ]
   }
-```
+{% endhighlight %}
 
 It can output in many formats, including YAML. 
 
@@ -104,14 +104,14 @@ Could we write plain YAML and add programmatic features to it in some undisturbi
 
 [YTT](https://get-ytt.io/) does this with a language written in YAML comments.
 
-```yaml
+{% highlight yaml %}
   #@ for/end echo in data.values.echos:
   - name: #@ name(echo)
     image: hashicorp/http-echo
     args:
     - #@ "-listen=:" + str(echo.port)
     - #@ "-text=" + echo.text
-```
+{% endhighlight %}
 
 The structure of YAML is preserved and understood by the tool.
 Is this the ultimate definitive way to solve the problem? 
