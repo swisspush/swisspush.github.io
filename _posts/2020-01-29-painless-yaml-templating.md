@@ -126,7 +126,7 @@ Thinking about this, I reminded [some work I did with YAML about ten years ago](
 
 > YAML's strength is in the tags
 
-With YAML tags in and mind inspiration from YTT and Jsonnet, came the design of [Yglu](https://yglu.io).
+With YAML tags in and mind inspiration from YTT and Jsonnet, came the design of [Yglu ᕄ !?](https://yglu.io).
 
 <table>
 <tr><th>Input</th><th>Output</th></tr>
@@ -177,4 +177,4 @@ It allows for introducing YAML factorization progressively, integrate with exist
 
 It is probably the correct base for the tools to come. Maybe with other expression languages, but certainly with YAML tags.
 
-<p style="text-align:center"><code>Yglu ᕄ <b>!?</b></code></p>
+<p style="text-align:center"><a href="https://yglu.io"><b>Yglu ᕄ !?</b></a></p>
