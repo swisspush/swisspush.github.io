@@ -120,9 +120,9 @@ Is this the ultimate definitive way to solve the problem?
 
 As YTT is designed as replacement of text templating for configuration files, it provides a set of operations optimized for the task. Some features like overlays are powerful, some others like a single source for template values are limitating.
 
-## Leveraging YAML Features
+## Leveraging YAML Tags
 
-Thinking about this, I reminded [some work I did with YAML about ten years ago](https://github.com/wfrog/wfrog/tree/master/wfcommon/config). It was a dependency injection system for Python _à la_ Spring Framework. It used the YAML tag system to create a configuration corresponding to Spring's Application Context. This YAML, thanks to the tag system was directly deserialized as the application singletons wired together.
+Thinking about this, I reminded [some work I did with YAML about ten years ago](https://github.com/wfrog/wfrog/tree/master/wfcommon/config). It is a dependency injection system for Python _à la_ Spring Framework. It uses the YAML tag system to create a configuration corresponding to Spring's Application Context. This YAML, thanks to the tag system and anchors is directly deserialized as wired singletons forming the application structure.
 
 > YAML's strength is in the tags
 
@@ -177,6 +177,4 @@ It allows for introducing YAML factorization progressively, integrate with exist
 
 It is probably the correct base for the tools to come. Maybe with other expression languages, but certainly with YAML tags.
 
-<p align=center>
-<code>ᕄ <b>!?</b></code>
-<p>
+<p style="text-align:center"><code>Yglu ᕄ <b>!?</b></code></p>
