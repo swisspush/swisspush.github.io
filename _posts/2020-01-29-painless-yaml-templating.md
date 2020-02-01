@@ -118,7 +118,7 @@ Is this the ultimate definitive way to solve the problem?
 
 > As a developer, don't you a feel slight discomfort when you write code inside comments?
 
-As YTT is designed as replacement of text templating for configuration files, it provides a set of operations optimized for the task. Some features like overlays are powerful, some others like a single source for template values are limitating.
+As YTT is designed as replacement of text templating for configuration files, it provides a set of operations optimized for the task. Some features like overlays are powerful, some others like the model for loading template values are limitating.
 
 ## Leveraging YAML Tags
 
