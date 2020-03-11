@@ -50,6 +50,7 @@ group: navigation
         concatMap(info => ajax({url: info.tags_url, cache: true}).pipe(
             flatMap(xhr => xhr.response),
             filter(tag => tag.name.startsWith("v")),
+            map(tag => tag.name),
             toArray(),
             map(releases => new Object({ info, releases }))
         )),
