@@ -34,7 +34,7 @@ group: navigation
         </h2>
         [[ repo.info.description ]] 
         <ul class="release-list">
-            <li v-for="release in repo.releases"><a :href="'rawcdn.githack.com/swisspush/'+repo.info.name+'/'+release+'/ui/index.html?url=../model/openapi/api.yaml'">[[ release ]]</a></li>
+            <li v-for="release in repo.releases"><a :href="'http://rawcdn.githack.com/swisspush/'+repo.info.name+'/'+release+'/ui/index.html?url=../model/openapi/api.yaml'">[[ release ]]</a></li>
         </ul>            
     </div>
 </div>
