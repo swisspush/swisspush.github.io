@@ -34,7 +34,7 @@ group: navigation
         </h2>
         [[ repo.info.description ]] 
         <ul class="release-list">
-            <li v-for="release in repo.releases"><a :href="'https://rawgit.com/swisspush/apikana-doc/v0.4.14.2/index.html?url=/swisspush/'+repo.info.name+'/release/'+release+'/src/openapi/api.yaml'">[[ release ]]</a></li>
+            <li v-for="release in repo.releases"><a :href="'rawcdn.githack.com/swisspush/'+repo.info.name+'/'+release+'/ui/index.html?url=../model/openapi/api.yaml'">[[ release ]]</a></li>
         </ul>            
     </div>
 </div>
@@ -49,8 +49,7 @@ group: navigation
         filter(info => info.topics.includes("api")),
         concatMap(info => ajax({url: info.tags_url, cache: true}).pipe(
             flatMap(xhr => xhr.response),
-            filter(tag => tag.name.startsWith("release/")),
-            map(tag => tag.name.split("/")[1]),
+            filter(tag => tag.name.startsWith("v")),
             toArray(),
             map(releases => new Object({ info, releases }))
         )),
