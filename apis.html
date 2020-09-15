@@ -28,7 +28,7 @@ group: navigation
     <img v-if='!repos' src='/assets/themes/swisspush/images/loading.gif'>
     <div v-for="repo in repos">
         <h2>[[ repo.info.name ]]
-            <a :href="'https://github.com/swisspush/'+repo.info.name">
+            <a :href="'https://github.com/techsysapi/'+repo.info.name">
                 <img class="icon" src="https://unpkg.com/simple-icons@latest/icons/github.svg"/>
             </a>
         </h2>
