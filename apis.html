@@ -34,7 +34,7 @@ group: navigation
         </h2>
         [[ repo.info.description ]] 
         <ul class="release-list">
-            <li v-for="release in repo.releases"><a :href="'http://rawcdn.githack.com/swisspush/'+repo.info.name+'/'+release+'/ui/index.html?url=../model/openapi/api.yaml'">[[ release ]]</a></li>
+            <li v-for="release in repo.releases"><a :href="'https://techsysapi.github.io/'+repo.info.name+'/'+release+'/ui/index.html?url=../model/openapi/api.yaml'">[[ release ]]</a></li>
         </ul>            
     </div>
 </div>
@@ -44,9 +44,8 @@ group: navigation
 <script>
     const { ajax } = rxjs.ajax;
     const { filter, map, flatMap, concatMap, tap, toArray } = rxjs.operators;
-    const repos$ = ajax({url:"https://api.github.com/users/swisspush/repos?per_page=100", cache: true, headers: {"Accept": "application/vnd.github.mercy-preview+json"}}).pipe(
+    const repos$ = ajax({url:"https://api.github.com/users/techsysapi/repos?per_page=100", cache: true, headers: {"Accept": "application/vnd.github.mercy-preview+json"}}).pipe(
         flatMap(xhr => xhr.response),
-        filter(info => info.topics.includes("api")),
         concatMap(info => ajax({url: info.tags_url, cache: true}).pipe(
             flatMap(xhr => xhr.response),
             filter(tag => tag.name.startsWith("v")),
